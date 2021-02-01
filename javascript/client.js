@@ -7,15 +7,18 @@ function Init_products_data() { // Init. list of products (index.php)
         .then(function(api_data) { let i = 0; max_products = api_data.length;
             while(i < api_data.length) {
 
-                var product_x = document.createElement("div");
+                var product_x = document.createElement("a");
                 var img_x = document.createElement("img");
                 var price_x = document.createElement("div");
+                var price_int = api_data[i]['price']/100;
                 var txt_x = document.createElement("div");
                 var buy_x = document.createElement("div");
 
                 // Create item of new product
                 product_x.classList.add("product-item");
+                product_x.href = "product.html?id=" + api_data[i]['_id']; // Update link for view this product
                 document.querySelector('.product-list').appendChild(product_x);
+                product_x.style.animationDelay = "0." + i*2 + "s"; // Animation stylé ;)
 
                 // Create and attach img of new product
                 img_x.classList.add("product-img");
@@ -24,7 +27,7 @@ function Init_products_data() { // Init. list of products (index.php)
 
                 // Create and attach price of new product
                 price_x.classList.add("product-price");
-                price_x.innerHTML = api_data[i]['price'];
+                price_x.innerHTML = price_int + ".00€";
                 product_x.appendChild(price_x);
 
                 // Create, define and attach description of new product
@@ -39,18 +42,5 @@ function Init_products_data() { // Init. list of products (index.php)
             
                 i++;
             }
-            // Update all products prices formats
-            setTimeout(function() { updateProductPrice(); }, 50);
         });
-}
-
-function updateProductPrice() {
-    let i = 0;
-    while(i < max_products) {
-        var final_price = "0€";
-        var init_price = document.getElementsByClassName('product-price')[i].innerHTML;
-        final_price = init_price.substr(0, init_price.length-2);
-        document.getElementsByClassName('product-price')[i].innerHTML = final_price + ",00€";
-        i++;
-    }
 }
