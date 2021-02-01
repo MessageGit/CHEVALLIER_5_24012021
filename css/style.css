@@ -72,6 +72,8 @@ body {
     height: 400px;
     width: 100%;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
     box-shadow: 2px 4px 5px 0px rgb(62 62 62 / 75%) inset;
 }
 
@@ -141,6 +143,22 @@ body {
     border-bottom: 2px solid green;
     border-left: 2px solid green;
     transform: rotate(315deg);
+}
+
+.intro-content .pay-options {
+    position: fixed;
+    top: 56%;
+    width: 1000px;
+    height: 45px;
+    display: inline-block;
+}
+
+.intro-content .pay-options img {
+    position: relative;
+    right: 10px;
+    margin-right: 20px;
+    height: 80%;
+    float: right;
 }
 
 /* Catalog content */
