@@ -172,6 +172,14 @@ body {
     z-index: 1;
 }
 
+.catalog-content #db-error {
+    position: relative;
+    top: 70px;
+    text-align: center;
+    color: #a7a7a7;
+    display: none;
+}
+
 .catalog-content .product-list {
     position: relative;
     top: 50px;

@@ -4,6 +4,10 @@ function Init_products_data() { // Init. list of products (index.php)
 
     fetch('http://localhost:3001/api/cameras/')
         .then(function(response) { return response.json(); })
+        .catch((error) => {
+            document.getElementsByClassName('catalog-content')[0].style.height = "400px";
+            document.getElementById('db-error').style.display = "block";
+        })
         .then(function(api_data) { let i = 0; max_products = api_data.length;
             while(i < api_data.length) {
 
