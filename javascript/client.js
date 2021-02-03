@@ -4,7 +4,7 @@ var option_selected = 1;
 function Init_products_data() { // Init. list of products (index.php)
 
     fetch('http://localhost:3001/api/cameras/')
-        .then(function(response) { return response.json(); })
+        .then(response => response.json())
         .catch((error) => {
             document.getElementsByClassName('catalog-content')[0].style.height = "400px";
             document.getElementById('db-error').style.display = "block";
@@ -50,9 +50,9 @@ function Init_products_data() { // Init. list of products (index.php)
         });
 }
 
+function getProductOfViewPage() { return window.location.search.substr(4); }
 function viewProductId() { // Init. data of product viewer (product.html)
-    var product_id = window.location.search.substr(4);
-    fetch('http://localhost:3001/api/cameras/' + product_id)
+    fetch('http://localhost:3001/api/cameras/' + getProductOfViewPage())
         .then(function(response) { return response.json(); })
         .catch((error) => { // Echec de la méthode fetch
             alert('Un problème est survenu lors de la récupération des données..');
@@ -85,4 +85,14 @@ function productOption(option_id) { // Select option of product
     document.getElementById('item-checked-' + option_id).style.display = "block";
     document.getElementsByClassName('item-option')[option_id-1].style.backgroundColor = "#333"; 
     option_selected = option_id;
+}
+
+function addToCart() { // Add product to cart
+    if(!localStorage.getItem('cart')) { // Cart is empty
+        var cart_data = {products: [getProductOfViewPage()]}; // Insert product in variable (JS Object)
+    } else { // Items exists in cart
+        var cart_data = JSON.parse(localStorage.getItem('cart')); // Get cart products in 'cart' item (localStorage)
+        cart_data.products.push(getProductOfViewPage()); // Add this new product in my JSON object
+    }
+    localStorage.setItem('cart', JSON.stringify(cart_data)); // Convert to string format and save in localStorage
 }
