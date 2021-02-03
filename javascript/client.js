@@ -1,4 +1,5 @@
 var max_products = 0;
+var option_selected = 1; 
 
 function Init_products_data() { // Init. list of products (index.php)
 
@@ -47,4 +48,41 @@ function Init_products_data() { // Init. list of products (index.php)
                 i++;
             }
         });
+}
+
+function viewProductId() { // Init. data of product viewer (product.html)
+    var product_id = window.location.search.substr(4);
+    fetch('http://localhost:3001/api/cameras/' + product_id)
+        .then(function(response) { return response.json(); })
+        .catch((error) => { // Echec de la méthode fetch
+            alert('Un problème est survenu lors de la récupération des données..');
+        })
+        .then(function(api_data) {
+            if(!api_data['_id']) { // L'ID ne correspond à aucune caméra
+                alert('Un problème est survenu lors de la récupération des données..');
+            } else { // L'ID renseigné dans l'URL correspond à une caméra
+                document.getElementById('view-name').innerHTML = api_data['name'];
+                document.getElementById('view-img').src = api_data['imageUrl'];
+                document.getElementById('view-img').style.opacity = 1;
+                document.getElementById('view-img').style.transform = "scale(1.0)";
+                document.getElementById('view-desc').innerHTML = api_data['description'];
+                document.getElementById('item-price').innerHTML = api_data['price']/100 + ".00€";
+                // Gestion des options
+                let i = 0;
+                while(i < api_data['lenses'].length) { i ++;
+                    document.getElementById('item-option-' + i).innerHTML = api_data['lenses'][i-1];
+                    document.getElementsByClassName('item-option')[i-1].style.display = "block";
+                }
+            }
+        });
+}
+
+function productOption(option_id) { // Select option of product
+    // Old selected option
+    document.getElementById('item-checked-' + option_selected).style.display = "none";
+    document.getElementsByClassName('item-option')[option_selected-1].style.backgroundColor = "#c5c5c5"; 
+    // New selected option
+    document.getElementById('item-checked-' + option_id).style.display = "block";
+    document.getElementsByClassName('item-option')[option_id-1].style.backgroundColor = "#333"; 
+    option_selected = option_id;
 }
