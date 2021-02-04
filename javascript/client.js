@@ -96,3 +96,46 @@ function addToCart() { // Add product to cart
     }
     localStorage.setItem('cart', JSON.stringify(cart_data)); // Convert to string format and save in localStorage
 }
+
+function viewMyCart() { // Visualize my cart (items refresh)
+    var cart_data = JSON.parse(localStorage.getItem('cart'));
+    let i = 0;
+    while(i < cart_data.products.length) {
+        fetch('http://localhost:3001/api/cameras/' + cart_data.products[i])
+        .then(function(response) { return response.json(); })
+        .catch((error) => { // Echec de la méthode fetch
+            alert('Un problème est survenu lors de la récupération des données..');
+        })
+        .then(function(api_data) {
+            var product_x = document.createElement("div");
+            var img_x = document.createElement("img");
+            var price_x = document.createElement("div");
+            var price_int = api_data['price']/100;
+            var txt_x = document.createElement("div");
+            var option_x = document.createElement("div");
+            var name_x = document.createElement("div");
+            // Create item of product
+            product_x.classList.add("cart-x-item");
+            document.querySelector('.cart-details').appendChild(product_x);
+            // Create and attach img of product
+            img_x.src = api_data['imageUrl']; // Update link of img
+            product_x.appendChild(img_x);
+            // Create and attach price of product
+            price_x.classList.add("cart-x-price");
+            price_x.innerHTML = price_int + ".00€";
+            product_x.appendChild(price_x);
+            // Create, define and attach description of product
+            txt_x.classList.add("cart-x-desc");
+            txt_x.innerHTML = api_data['description'];
+            product_x.appendChild(txt_x);
+            // Create, define and attach specific option of product
+            option_x.classList.add("cart-x-option");
+            option_x.innerHTML = "<b>Option:</b> 1.8mm x 19.7mm";
+            product_x.appendChild(option_x);
+            // Create, define and attach name of product
+            name_x.classList.add("cart-x-name");
+            name_x.innerHTML = api_data['name'];
+            product_x.appendChild(name_x);
+        }); i ++;
+    }
+}

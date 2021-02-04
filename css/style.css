@@ -29,6 +29,7 @@ body {
     padding: 5px 0px 5px 0px; 
     cursor: pointer;
     border-radius: 2px;
+    text-decoration: none;
     transition-duration: 0.2s;
 }
 
@@ -438,6 +439,106 @@ body {
     height: 26px;
     background: url(../img/shop_icon.png) no-repeat;
     background-size: 100% 100%;
+}
+
+/* Cart content */
+.cart-content {
+    position: relative;
+    margin-top: 70px;
+    width: 100%;
+    min-height: 420px;
+    display: flex;
+    margin-bottom: 60px;
+    justify-content: center;
+}
+
+.cart-content .my-cart {
+    position: relative;
+    width: 1000px;
+}
+
+.cart-content .my-cart .cart-section {
+    position: relative;
+    width: 50%;
+}
+
+.cart-content .my-cart .left-section { float: left; }
+.cart-content .my-cart .right-section { float: right; }
+
+.cart-content .my-cart .left-section h1 {
+    position: relative;
+    margin: 35px;
+    font-size: 22px;
+    padding-bottom: 10px;
+    border-bottom: 2px dotted #333;
+}
+
+.cart-content .my-cart .left-section .cart-details {
+    position: relative;
+    left: 35px;
+    width: 86%;
+}
+
+.cart-content .my-cart .left-section .cart-details .cart-x-item {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 5px;
+    opacity: 0;
+    animation: show_item 1s both;
+}
+
+@keyframes show_item {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.cart-content .my-cart .left-section .cart-details .cart-x-item img {
+    position: relative;
+    float: left;
+    top: 5%;
+    height: 90%;
+    left: 5px;
+    border-radius: 5px;
+    max-width: 190px;
+}
+
+.cart-content .my-cart .left-section .cart-details .cart-x-item .cart-x-price {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 14px;
+    padding: 5px 16px 5px 16px;
+    background-color: #7c8cb9;
+    color: white;
+    border-radius: 3px;
+}
+
+.cart-content .my-cart .left-section .cart-details .cart-x-item .cart-x-name {
+    position: absolute;
+    top: 11px;
+    left: 210px;
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+.cart-content .my-cart .left-section .cart-details .cart-x-item .cart-x-option {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.cart-content .my-cart .left-section .cart-details .cart-x-item .cart-x-desc {
+    position: absolute;
+    top: 47.5px;
+    left: 210px;
+    font-size: 11px;
+    color: #333;
 }
 
 /* Footer */
