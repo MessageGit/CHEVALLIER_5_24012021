@@ -495,12 +495,21 @@ body {
 .cart-content .my-cart .left-section { float: left; }
 .cart-content .my-cart .right-section { float: right; }
 
-.cart-content .my-cart .left-section h1 {
+.cart-content .my-cart h1 {
     position: relative;
     margin: 35px;
     font-size: 22px;
     padding-bottom: 10px;
     border-bottom: 2px dotted #333;
+    font-family: 'Roboto';
+}
+
+.cart-content .my-cart .right-section h1 { 
+    text-align: right;
+    border-bottom: 0px;
+    color: #7c8cb9;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .cart-content .my-cart .left-section .cart-details {
@@ -524,7 +533,7 @@ body {
 }
 
 .cart-content .my-cart .left-section .cart-details .cart-x-item:hover {
-    width: 110%;
+    width: 105%;
     background-color: #333;
     color: white;
 }
@@ -575,6 +584,116 @@ body {
     top: 47.5px;
     left: 210px;
     font-size: 11px;
+}
+
+.cart-content .my-cart .right-section #pay-content { 
+    position: fixed;
+    width: 490px;
+    height: 420px;
+    background-color: #ffffff80;
+    z-index: 2;
+}
+
+.cart-content .my-cart .right-section .form-input {
+    position: relative;
+    margin: 0px 25px 20px 0px;
+    float: right;
+    outline: 0;
+    border: 1px solid #d0d0d0;
+    padding: 7px 7px 7px 20px;
+    width: 205px;
+    text-align: left;
+    font-family: Roboto;
+    color: #333;
+}
+
+.cart-content .my-cart .right-section #email-input { width: 435px; }
+
+.cart-content .my-cart .right-section .form-input::placeholder { color: #888888; }
+
+.cart-content .my-cart .right-section .pay-module {
+    position: relative;
+    right: 25px;
+    width: 88%;
+    height: 110px;
+    float: right;
+}
+
+.cart-content .my-cart .right-section .pay-module .cmd-result {
+    position: relative;
+    top: 0%;
+    height: 80%;
+    width: 48%;
+    background-color: white;
+}
+
+.cart-content .my-cart .right-section .pay-module .cmd-res-left {
+    float: left;
+    border-radius: 2px;
+}
+
+.cart-content .my-cart .right-section .pay-module .cmd-res-left #total-label {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.cart-content .my-cart .right-section .pay-module .cmd-res-left #total-count {
+    position: relative;
+    float: left;
+    top: 35px;
+    left: 10px;
+    font-size: 22px;
+}
+
+.cart-content .my-cart .right-section .pay-module .cmd-res-right {
+    float: right;
+    background-color: transparent;
+}
+
+.cart-content .my-cart .right-section .pay-module .cmd-res-right .result-btn {
+    margin: 3% 5% 2% 5%;
+    width: 95%;
+    height: 45%;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    transition-duration: 0.25s;
+    font-family: Roboto;
+}
+
+.cart-content .my-cart .right-section .pay-module .cmd-res-right .result-btn:hover {
+    opacity: 0.6;
+}
+
+.cart-content .my-cart .right-section .pay-module .cmd-res-right #pay-cart-btn {
+    position: relative;
+    background-color: #7c8cb9;
+}
+.cart-content .my-cart .right-section .pay-module .cmd-res-right #pay-cart-btn::after {
+    content: '';
+    position: absolute;
+    right: 25px;
+    top: 11px;
+    width: 18px;
+    height: 9px;
+    border-bottom: 3px solid white;
+    border-left: 3px solid white;
+    transform: rotate(305deg);
+}
+.cart-content .my-cart .right-section .pay-module .cmd-res-right #clear-cart-btn {
+    margin-top: 0px;
+    background-color: #5d5d5d;
+    color: #e8e8e8;
+}
+
+.cart-content .my-cart .right-section .pay-module .cmd-res-right .result-btn span {
+    position: relative;
+    top: 7px;
+    margin: 10px;
+    font-size: 13px;
 }
 
 /* Footer */
