@@ -43,8 +43,11 @@
         <!-- My cart -->
         <div class="cart-content">
           <div class="my-cart">
+            <div id="empty-cart">
+              <span>Votre panier semble vide..<br />Jetez un coup d'oeil à notre <a href="index.html">nouvelle collection</a></span>
+            </div>
             <div class="cart-section left-section">
-              <h1>Détails de mon panier</h1>
+              <span id="cart-info">&nbsp;</span>
               <div class="cart-details">
                 
               </div>
@@ -52,8 +55,8 @@
             <div class="cart-section right-section">
               <div id="pay-content">
                 <h1>Finaliser ma commande</h1>
-                <input type="text" placeholder="Nom" name="lastName" class="form-input" id="lastName-input">
                 <input type="text" placeholder="Prénom" name="firstName" class="form-input" id="firstName-input">
+                <input type="text" placeholder="Nom" name="lastName" class="form-input" id="lastName-input">
                 <br />
                 <input type="text" placeholder="Adresse" name="address" class="form-input" id="address-input">
                 <input type="text" placeholder="Ville" name="city" class="form-input" id="city-input">
@@ -65,8 +68,8 @@
                     <span id="total-count">3099.00€</span>
                   </div>
                   <div class="cmd-result cmd-res-right">
-                    <div class="result-btn" id="clear-cart-btn"><span class="btn-label">Vider mon panier</span></div>
-                    <div class="result-btn" id="pay-cart-btn"><span class="btn-label">Payer ma commande</span></div>
+                    <div class="result-btn" id="clear-cart-btn" onclick="clearCart()"><span class="btn-label">Vider mon panier</span></div>
+                    <div class="result-btn" id="pay-cart-btn" onclick="validCommand()"><span class="btn-label">Payer ma commande</span></div>
                   </div>
                 </div>
               </div>

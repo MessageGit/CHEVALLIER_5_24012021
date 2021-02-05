@@ -105,11 +105,23 @@ function addToCart() { // Add product to cart
 function viewMyCart() { // Visualize my cart (items refresh)
     var cart_data = JSON.parse(localStorage.getItem('cart'));
     var option_data = JSON.parse(localStorage.getItem('option'));
-    let i = 0;
-    while(i < cart_data.products.length) {
-        var option_id = option_data.options[i]; // Get option for this product
-        displayCartProduct(cart_data.products[i], option_id); // Show product in my cart
-        i ++;
+    document.getElementsByClassName('my-cart')[0].style.display = "block"; // Show main content
+    setTimeout(function() { document.getElementsByClassName('my-cart')[0].style.opacity = "1"; }, 250);
+    if(cart_data) {
+        let i = 0;
+        while(i < cart_data.products.length) {
+            var option_id = option_data.options[i]; // Get option for this product
+            displayCartProduct(cart_data.products[i], option_id); // Show product in my cart
+            i ++;
+        }
+        // Display count of my products
+        document.getElementById('cart-info').innerHTML = i + " article(s) dans votre panier";
+        // Show content
+        document.getElementsByClassName('cart-section')[0].style.display = "block";
+        document.getElementsByClassName('cart-section')[1].style.display = "block";
+    } else {
+        // Show content
+        document.getElementById('empty-cart').style.display = "block";
     }
 }
 
@@ -127,6 +139,7 @@ function displayCartProduct(product_id, option_id) {
             var txt_x = document.createElement("div");
             var option_x = document.createElement("div");
             var name_x = document.createElement("div");
+            var point_x = document.createElement("div");
             // Create item of product
             product_x.classList.add("cart-x-item");
             document.querySelector('.cart-details').appendChild(product_x);
@@ -149,5 +162,17 @@ function displayCartProduct(product_id, option_id) {
             name_x.classList.add("cart-x-name");
             name_x.innerHTML = api_data['name'];
             product_x.appendChild(name_x);
+            // Attach visual element
+            point_x.classList.add("cart-x-point");
+            product_x.appendChild(point_x);
         });
+}
+
+function validCommand() {
+
+}
+
+function clearCart() {
+    localStorage.clear();
+    window.location.reload();
 }

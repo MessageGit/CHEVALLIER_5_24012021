@@ -485,41 +485,77 @@ body {
 .cart-content .my-cart {
     position: relative;
     width: 1000px;
+    transition-duration: 0.5s;
+    display: none;
+    opacity: 0;
 }
 
 .cart-content .my-cart .cart-section {
     position: relative;
     width: 50%;
+    display: none;
 }
 
-.cart-content .my-cart .left-section { float: left; }
+.cart-content .my-cart #empty-cart {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    display: none;
+}
+
+.cart-content .my-cart #empty-cart span {
+    position: relative;
+    top: 145px;
+    font-family: 'Roboto';
+    font-size: 22px;
+    color: #a2a2a2;
+    font-weight: bold;
+}
+
+.cart-content .my-cart #empty-cart span a {
+    position: relative;
+    bottom: 1px;
+    color: white;
+    background-color: #a6acd4;
+    padding: 4px 15px 6px 15px;
+    border-radius: 0px;
+    text-decoration: none;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.cart-content .my-cart .left-section { float: left; border-left: 3px dotted #333; }
 .cart-content .my-cart .right-section { float: right; }
 
 .cart-content .my-cart h1 {
-    position: relative;
     margin: 35px;
-    font-size: 22px;
-    padding-bottom: 10px;
-    border-bottom: 2px dotted #333;
-    font-family: 'Roboto';
-}
-
-.cart-content .my-cart .right-section h1 { 
     text-align: right;
-    border-bottom: 0px;
     color: #7c8cb9;
     font-weight: bold;
     font-size: 25px;
+    font-family: 'Roboto';
+}
+
+.cart-content .my-cart #cart-info { 
+    position: relative;
+    top: 35px;
+    margin: 35px;
+    font-size: 19px;
+    padding-bottom: 10px;
+    font-family: 'Roboto';
 }
 
 .cart-content .my-cart .left-section .cart-details {
     position: relative;
     left: 35px;
     width: 86%;
+    margin-bottom: 60px;
 }
 
 .cart-content .my-cart .left-section .cart-details .cart-x-item {
     position: relative;
+    top: 45px;
     width: 100%;
     height: 140px;
     margin-top: 20px;
@@ -586,18 +622,32 @@ body {
     font-size: 11px;
 }
 
+.cart-content .my-cart .left-section .cart-details .cart-x-item .cart-x-point {
+    position: absolute;
+    top: 42%;
+    width: 14px;
+    height: 14px;
+    background-color: #fff;
+    left: -43px;
+    border-radius: 45px;
+    border: 2px solid #333;
+}
+
 .cart-content .my-cart .right-section #pay-content { 
     position: fixed;
     width: 490px;
     height: 420px;
     background-color: #ffffff80;
     z-index: 2;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    box-shadow: 2px 8px 25px 0px rgb(222 222 222 / 75%);
 }
 
 .cart-content .my-cart .right-section .form-input {
     position: relative;
-    margin: 0px 25px 20px 0px;
-    float: right;
+    margin: 0px 0px 20px 25px;
+    float: left;
     outline: 0;
     border: 1px solid #d0d0d0;
     padding: 7px 7px 7px 20px;
@@ -634,18 +684,22 @@ body {
 
 .cart-content .my-cart .right-section .pay-module .cmd-res-left #total-label {
     position: absolute;
-    top: 5px;
-    left: 10px;
+    margin: 10px;
     font-size: 13px;
-    font-weight: bold;
+    font-family: Roboto;
+    color: #949494;
 }
 
 .cart-content .my-cart .right-section .pay-module .cmd-res-left #total-count {
     position: relative;
     float: left;
     top: 35px;
-    left: 10px;
+    left: 15px;
     font-size: 22px;
+    font-family: 'Roboto';
+    color: #7c8cb9;
+    font-weight: bold;
+    margin-left: 10px;
 }
 
 .cart-content .my-cart .right-section .pay-module .cmd-res-right {
