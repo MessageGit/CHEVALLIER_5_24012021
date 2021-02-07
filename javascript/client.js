@@ -1,5 +1,6 @@
 var max_products = 0;
-var option_selected = 1; 
+var option_selected = 1;
+var cart_price = 0;
 
 function Init_products_data() { // Init. list of products (index.php)
     fetch('http://localhost:3001/api/cameras/')
@@ -80,15 +81,14 @@ function productOption(option_id) { // Select option of product
 }
 
 function addToCart() { // Add product to cart
-    option_selected -= 1;
     if(!localStorage.getItem('cart')) { // Cart is empty
         var cart_data = {products: [getProductOfViewPage()]}; // Insert product in variable (JS Object)
-        var option_data = {options: [option_selected]}; // Insert option id for this product
+        var option_data = {options: [option_selected-1]}; // Insert option id for this product
     } else { // Items exists in cart
         var cart_data = JSON.parse(localStorage.getItem('cart')); // Get cart products in 'cart' item (localStorage)
         cart_data.products.push(getProductOfViewPage()); // Add this new product in my JSON object
         var option_data = JSON.parse(localStorage.getItem('option')); // Get options (id) in array for all products saveds
-        option_data.options.push(option_selected); // Add new option (id) for this new product
+        option_data.options.push(option_selected-1); // Add new option (id) for this new product
     }
     // Convert to string format and save in localStorage
     localStorage.setItem('cart', JSON.stringify(cart_data));
@@ -119,6 +119,8 @@ function viewMyCart() { // Visualize my cart (items refresh)
         // Show content
         document.getElementsByClassName('cart-section')[0].style.display = "block";
         document.getElementsByClassName('cart-section')[1].style.display = "block";
+        // Final price
+        setTimeout(function() { document.getElementById('total-count').innerHTML = cart_price + ",00€"; }, 250);
     } else {
         // Show content
         document.getElementById('empty-cart').style.display = "block";
@@ -136,6 +138,7 @@ function displayCartProduct(product_id, option_id) {
             var img_x = document.createElement("img");
             var price_x = document.createElement("div");
             var price_int = api_data['price']/100;
+            cart_price += price_int;
             var txt_x = document.createElement("div");
             var option_x = document.createElement("div");
             var name_x = document.createElement("div");
@@ -168,11 +171,67 @@ function displayCartProduct(product_id, option_id) {
         });
 }
 
-function validCommand() {
-
-}
-
+// Delete my cart and refresh
 function clearCart() {
     localStorage.clear();
     window.location.reload();
+}
+
+// Shortcut (Press ENTER and send form)
+document.onkeypress = function(event) { 
+    if(event.keyCode == 13 && document.getElementsByClassName('cart-content')[0] != null) { validCommand(); } 
+}
+
+// Send form and valid command
+function validCommand() {
+    const first_name = document.getElementById('firstName-input').value;
+    const last_name = document.getElementById('lastName-input').value;
+    const address = document.getElementById('address-input').value;
+    const city = document.getElementById('city-input').value;
+    const email = document.getElementById('email-input').value;
+    if(first_name.length != 0 && last_name.length != 0 && address.length != 0 && city.length != 0 && email.length != 0) {
+        if(/^[a-zA-ZÀ-ÿ]+(?:[\s-][a-zA-Z]+)*$/.test(first_name) && /^[a-zA-ZÀ-ÿ]+(?:[\s-][a-zA-Z]+)*$/.test(last_name)) {
+            if(/^[a-zA-ZÀ-ÿ]+(?:[\s-][a-zA-Z]+)*$/.test(city)) {
+                if(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {
+
+                    var cart_data = JSON.parse(localStorage.getItem('cart'));
+                    const data = {
+                        contact: {"firstName": first_name, "lastName": last_name, "address": address, "city": city, "email": email},
+                        products: cart_data.products
+                    };
+
+                    fetch('http://localhost:3001/api/cameras/order', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    })
+                    .catch((error) => { // Echec de la méthode fetch
+                        alert('Un problème est survenu lors de la récupération des données..');
+                    })
+                    .then(response => response.json())
+                    .then(function(api_response) {
+                        let i = 0; var new_total = 0;
+                        while(i < api_response.products.length) {
+                            new_total += api_response.products[i].price/100;
+                            i ++;
+                        }
+                        window.location.href = "thanks.html?order_id=" + api_response.orderId + "&amount=" + new_total;
+                    });
+
+                } else { alert('L\'adresse mail semble incorrect.'); }
+            } else { alert('La ville saisie semble introuvable.'); }
+        } else { alert('Votre nom et prénom doivent être au bon format.'); }
+    } else { alert('Tous les champs du formulaire doivent être renseignés.'); }
+}
+
+function getOrderInfos() {
+    const today = new Date();
+    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    const url = new URLSearchParams(window.location.search);
+    const order_id = url.get("order_id");
+    const total_price = url.get("amount");
+    document.getElementById('thanks-infos').innerHTML = "Référence de votre commande <b>n°" + order_id + "</b>.<br />Date & heure de votre commande: <b>" + date + " (" + time + ")</b>.<br />Montant total de votre commande: <b>" + total_price + ".00€</b>.";
 }

@@ -44,36 +44,38 @@
         <div class="product-viewer">
             <div class="view-content">
                 <img id="view-img" src="back-end/images/vcam_4.jpg" alt="Visualisation d'une caméra">
-                <div class="viewer-head">
-                    <div id="view-name">&nbsp;</div>
-                    <div id="view-payment">
-                        <img src="img/payments-method/black/visa_card.png" alt="Paiement via Visa">
-                        <img src="img/payments-method/black/paypal.png" alt="Paiement via Paypal">
-                        <img src="img/payments-method/black/gpay.png" alt="Paiement via Google pay">
-                    </div>
-                </div>
-                <div id="view-desc"></div>
-                <div class="view-options">
-                    <div class="item-option" onclick="productOption(1)" style="background-color: #333;">
-                        <div class="item-checked" id="item-checked-1"></div>
-                        <span id="item-option-1"></span>
-                    </div>
-                    <div class="item-option" onclick="productOption(2)">
-                        <div class="item-checked" id="item-checked-2"></div>
-                        <span id="item-option-2"></span>
-                    </div>
-                    <div class="item-option" onclick="productOption(3)">
-                        <div class="item-checked" id="item-checked-3"></div>
-                        <span id="item-option-3"></span>
-                    </div>
-                </div>
-                <div class="viewer-bottom">
-                  <div id="success-item">
-                    L'article a été ajouté à votre panier
+                <div id="view-informations">
+                  <div class="viewer-head">
+                      <div id="view-name">&nbsp;</div>
+                      <div id="view-payment">
+                          <img src="img/payments-method/black/visa_card.png" alt="Paiement via Visa">
+                          <img src="img/payments-method/black/paypal.png" alt="Paiement via Paypal">
+                          <img src="img/payments-method/black/gpay.png" alt="Paiement via Google pay">
+                      </div>
                   </div>
-                  <div id="manage-item">
-                    <div id="add-cart" onclick="addToCart()">Ajouter au panier</div>
-                    <div id="item-price">&nbsp;</div>
+                  <div id="view-desc"></div>
+                  <div class="view-options">
+                      <div class="item-option" onclick="productOption(1)" style="background-color: #333;">
+                          <div class="item-checked" id="item-checked-1"></div>
+                          <span id="item-option-1"></span>
+                      </div>
+                      <div class="item-option" onclick="productOption(2)">
+                          <div class="item-checked" id="item-checked-2"></div>
+                          <span id="item-option-2"></span>
+                      </div>
+                      <div class="item-option" onclick="productOption(3)">
+                          <div class="item-checked" id="item-checked-3"></div>
+                          <span id="item-option-3"></span>
+                      </div>
+                  </div>
+                  <div class="viewer-bottom">
+                    <div id="success-item">
+                      L'article a été ajouté à votre panier
+                    </div>
+                    <div id="manage-item">
+                      <div id="add-cart" onclick="addToCart()">Ajouter au panier</div>
+                      <div id="item-price">&nbsp;</div>
+                    </div>
                   </div>
                 </div>
             </div>
