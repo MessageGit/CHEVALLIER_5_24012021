@@ -1,9 +1,13 @@
 # CHEVALLIER_5_24012021
 Visualisez le front:<br /><br />
-<a href="https://www.zupimages.net/up/21/05/jorp.png" target="_blank">Accueil (Liste de produits)</a>
-<a href="https://www.zupimages.net/up/21/05/yave.png" target="_blank" style="margin-left: 20px;">Visualisation d'un produit</a>
-<a href="https://www.zupimages.net/up/21/05/f1dk.png" target="_blank" style="margin-left: 20px;">Page du panier</a>
-<a href="https://www.zupimages.net/up/21/05/31e8.png" target="_blank" style="margin-left: 20px;">Commande validée</a>
+Page d'accueil (Liste des produits disponibles):
+<a href="https://www.zupimages.net/up/21/05/jorp.png" target="_blank">Cliquer pour visualiser</a><br /><br />
+Visualisation d'un produit spécifique:
+<a href="https://www.zupimages.net/up/21/05/yave.png" target="_blank">Cliquer pour visualiser</a><br /><br />
+Page du contenu du panier:
+<a href="https://www.zupimages.net/up/21/05/f1dk.png" target="_blank">Cliquer pour visualiser</a><br /><br />
+Validation d'une commande: 
+<a href="https://www.zupimages.net/up/21/05/31e8.png" target="_blank">Cliquer pour visualiser</a><br />
 <b>Orinoco</b><br />
 This is the back end server for Project 5 of the Junior Web Developer path.
 <br /><br />
