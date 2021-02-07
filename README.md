@@ -1,11 +1,11 @@
 # CHEVALLIER_5_24012021
 Visualisez le front:<br /><br />
 Page d'accueil (Liste des produits disponibles):
-<a href="https://www.zupimages.net/up/21/05/jorp.png" target="_blank">Cliquer pour visualiser</a><br /><br />
+<a href="https://www.zupimages.net/up/21/05/jorp.png" target="_blank">Cliquer pour visualiser</a><br />
 Visualisation d'un produit spécifique:
-<a href="https://www.zupimages.net/up/21/05/yave.png" target="_blank">Cliquer pour visualiser</a><br /><br />
+<a href="https://www.zupimages.net/up/21/05/yave.png" target="_blank">Cliquer pour visualiser</a><br />
 Page du contenu du panier:
-<a href="https://www.zupimages.net/up/21/05/f1dk.png" target="_blank">Cliquer pour visualiser</a><br /><br />
+<a href="https://www.zupimages.net/up/21/05/f1dk.png" target="_blank">Cliquer pour visualiser</a><br />
 Validation d'une commande: 
 <a href="https://www.zupimages.net/up/21/05/31e8.png" target="_blank">Cliquer pour visualiser</a><br />
 <b>Orinoco</b><br />
