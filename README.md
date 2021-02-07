@@ -7,7 +7,7 @@ Visualisation d'un produit spécifique:
 Page du contenu du panier:
 <a href="https://www.zupimages.net/up/21/05/f1dk.png" target="_blank">Cliquer pour visualiser</a><br />
 Validation d'une commande: 
-<a href="https://www.zupimages.net/up/21/05/31e8.png" target="_blank">Cliquer pour visualiser</a><br />
+<a href="https://www.zupimages.net/up/21/05/31e8.png" target="_blank">Cliquer pour visualiser</a><br /><br />
 <b>Orinoco</b><br />
 This is the back end server for Project 5 of the Junior Web Developer path.
 <br /><br />
