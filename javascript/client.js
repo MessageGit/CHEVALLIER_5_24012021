@@ -10,7 +10,6 @@ function Init_products_data() { // Init. list of products (index.php)
             document.getElementById('db-error').style.display = "block";
         })
         .then(function(api_data) { let i = 0; max_products = api_data.length;
-            testApiValues(api_data); // Test des données reçues
             while(i < api_data.length) {
                 var product_x = document.createElement("a");
                 var img_x = document.createElement("img");
@@ -235,28 +234,4 @@ function getOrderInfos() {
     const order_id = url.get("order_id");
     const total_price = url.get("amount");
     document.getElementById('thanks-infos').innerHTML = "Référence de votre commande <b>n°" + order_id + "</b>.<br />Date & heure de votre commande: <b>" + date + " (" + time + ")</b>.<br />Montant total de votre commande: <b>" + total_price + ".00€</b>.";
-}
-
-/* Tests unitaires / Données reçues
-
-    1) Type of value received 
-    2) Length of camera '_id' 
-    3) Valid format of imageUrl
-    4) Price variable in valid format
-*/
-
-function testApiValues(data) {
-    if(typeof(data) == 'object') { let i = 0;
-        while(i < data.length) {
-            var imgExt = data[i].imageUrl.slice(-4);
-            if(data[i]._id.length == 24) {
-                if(imgExt == '.jpg' || imgExt == '.png' || imgExt == 'jpeg' || imgExt == '.gif') {
-                    if(typeof(data[i].price) == 'number') {
-                        // x4 test OK
-                    } else { alert('Le type de variable d\'un ou plusieurs prix d\'objets semble(nt) invalide(s).'); }
-                } else { alert('Donnée(s) corrompue(s)\nLe(s) lien(s) d\'une ou plusieurs image(s) semble(nt) invalide(s).'); }
-            } else { alert('Donnée(s) potentiellement erronée(s)\nL\'ID de l\'objet devrait contenir 24 caractères.'); }
-            i ++;
-        }
-    } else { alert('Echec d\'obtention des données\nMauvais format des données reçues.'); }
 }
